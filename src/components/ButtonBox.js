@@ -1,6 +1,6 @@
 const ButtonBox = ({children}) => {
     return (
-        <div class="buttonBox"> {children} </div>
+        <div className="buttonBox"> {children} </div>
     )
 }
 export default ButtonBox;
