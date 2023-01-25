@@ -75,7 +75,11 @@ const Button = ({ value }) => {
     const equalClick = () => {
         const calculate = (res,num,sign) => {
             const result = {
-                '+': (res,num) => res+num,
+                '+': (res,num) => {
+                    if (num === "0")
+                        return res
+                    return res+num;
+                },
                 '-': (res,num) => res-num,
                 'x': (res,num) => res*num,
                 '÷': (res,num) => res/num
