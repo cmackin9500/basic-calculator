@@ -5,7 +5,8 @@ const CalcProvider = ({children}) => {
     const [calc, setCalc] = useState({
         sign: "",
         num: 0,
-        res: 0
+        res: 0,
+        font: "3rem"
     });
 
     const providerValue = {

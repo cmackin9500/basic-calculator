@@ -18,11 +18,20 @@ const getStyleName = (btn) => {
 const Button = ({ value }) => {
     const { calc, setCalc } = useContext(CalcContext);
 
+    const calcFontSize = () => {
+        let len = (calc.num ? calc.num : calc.res).toString().length;
+        if (len > 10) {
+            return `${30/len}rem`
+        }
+        return "3rem";
+    }
+
     // user clicks decimal
     const decimalClick = () => {
         setCalc({
             ...calc,
-            num: !calc.num.toString().includes('.') ? calc.num+value : calc.num
+            num: !calc.num.toString().includes('.') ? calc.num+value : calc.num,
+            font: calcFontSize(),
         })
     }
 
@@ -31,7 +40,8 @@ const Button = ({ value }) => {
         setCalc({
             sign: "",
             num: 0,
-            res: 0
+            res: 0,
+            font: "3rem"
         })
     }
 
@@ -46,7 +56,8 @@ const Button = ({ value }) => {
 
         setCalc({
             ...calc,
-            num: newNum
+            num: newNum,
+            font: calcFontSize(),
         })
     }
 
@@ -55,7 +66,8 @@ const Button = ({ value }) => {
         setCalc({
             sign: value,
             res: calc.num && !calc.res ? calc.num : calc.res,
-            num: 0
+            num: 0,
+            font: calcFontSize(),
         })
     }
 
@@ -74,7 +86,8 @@ const Button = ({ value }) => {
         setCalc({
             res: calculate(calc.res, calc.num, calc.sign),
             sign: "",
-            num: 0
+            num: 0,
+            font: calcFontSize(),
         })
     }
 
@@ -83,7 +96,8 @@ const Button = ({ value }) => {
         setCalc({
             sign: "",
             num: -calc.num,
-            res: -calc.res
+            res: -calc.res,
+            font: calcFontSize(),
         })
     }
 
@@ -92,7 +106,8 @@ const Button = ({ value }) => {
         setCalc({
             sign: "",
             num: calc.num / 100,
-            res: calc.res / 100
+            res: calc.res / 100,
+            font: calcFontSize(),
         })
     }
 
